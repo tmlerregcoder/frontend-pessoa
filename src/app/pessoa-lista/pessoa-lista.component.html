@@ -1,0 +1,50 @@
+<div class="container mt-5">
+  <h2>Lista de Pessoas</h2>
+  <app-popup
+  *ngIf="showPopup"
+  [message]="popupMessage"
+  (close)="fecharPopup()"
+></app-popup>
+
+  <div class="mb-3">
+    <button class="btn btn-primary me-2" (click)="adicionarPessoa()">Incluir</button>
+    <button class="btn btn-outline-secondary" (click)="pesquisarPessoa()">Pesquisar</button>
+  </div>
+
+  <table class="table table-striped" *ngIf="pessoas.length > 0">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Sexo</th>
+        <th>CPF</th>
+        <th>Altura</th>
+        <th>Peso</th>
+        <th>Data de Nascimento</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pessoa of pessoas">
+        <td>{{ pessoa.nome }}</td>
+        <td>{{ pessoa.sexo ==='M'? 'Masculino':'Feminino' }}</td>
+        <td>{{ pessoa.cpf }}</td>
+        <td>{{ pessoa.altura | number: '1.2-2':'pt' }}</td>
+        <td>{{ pessoa.peso | number: '1.2-2':'pt' }} Kg</td>
+        <td>{{ pessoa.dataNascimento | date: 'dd/MM/yyyy' }}</td>
+        <td>
+          <button class="btn btn-sm btn-warning me-1" (click)="editarPessoa(pessoa?.id)">Alterar</button>
+          <button class="btn btn-sm btn-danger me-1" (click)="excluirPessoa(pessoa?.id)">Excluir</button>
+          <button class="btn btn-sm btn-primary" (click)="calcularPesoIdeal(pessoa)">Calcular Peso Ideal</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="alert alert-info" *ngIf="pessoas.length === 0">Nenhuma pessoa cadastrada.</p>
+
+  <div *ngIf="pesoIdealResultado" class="mt-3 alert alert-success">
+    <h3>Peso Ideal</h3>
+    <p>O peso ideal para {{ pessoaSelecionada?.nome }} é: {{ pesoIdealResultado | number: '1.2-2':'pt'}}  kg</p>
+    <button class="btn btn-sm btn-outline-secondary" (click)="pesoIdealResultado = null">Fechar</button>
+  </div>
+</div>

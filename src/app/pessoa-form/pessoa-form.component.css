@@ -1,0 +1,12 @@
+.ng-invalid.ng-touched + .invalid-feedback {
+  display: block;
+}
+
+.ng-invalid.ng-dirty + .invalid-feedback {
+  display: block;
+}
+label:has(+ .form-control[required])::after,
+label:has(+ .form-select[required])::after {
+  content: " *";
+  color: red;
+}

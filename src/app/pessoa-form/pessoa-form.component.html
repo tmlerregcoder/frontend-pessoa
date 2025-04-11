@@ -1,0 +1,62 @@
+<div class="container mt-4">
+  <h2>{{ pessoaId ? 'Editar Pessoa' : 'Adicionar Pessoa' }}</h2>
+
+  <form [formGroup]="pessoaForm" (ngSubmit)="onSubmit()" class="row g-3">
+    <div class="col-md-6">
+      <label for="nome" class="form-label">Nome:</label>
+      <input type="text" id="nome" formControlName="nome" required class="form-control">
+      <div *ngIf="pessoaForm.get('nome')?.invalid && (pessoaForm.get('nome')?.dirty || pessoaForm.get('nome')?.touched)" class="invalid-feedback">
+        Nome é obrigatório.
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="sexo" class="form-label">Sexo:</label>
+      <select id="sexo" formControlName="sexo" required class="form-select">
+        <option value="">Selecione</option>
+        <option value="M">Masculino</option>
+        <option value="F">Feminino</option>
+      </select>
+      <div *ngIf="pessoaForm.get('sexo')?.invalid && (pessoaForm.get('sexo')?.dirty || pessoaForm.get('sexo')?.touched)" class="invalid-feedback">
+        Sexo é obrigatório.
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <label for="cpf" class="form-label">CPF:</label>
+      <input type="text" id="cpf" formControlName="cpf" required class="form-control">
+      <div *ngIf="pessoaForm.get('cpf')?.invalid && (pessoaForm.get('cpf')?.dirty || pessoaForm.get('cpf')?.touched)" class="invalid-feedback">
+        CPF é obrigatório.
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <label for="altura" class="form-label">Altura:</label>
+      <input type="number" id="altura" formControlName="altura" required class="form-control">
+      <div *ngIf="pessoaForm.get('altura')?.invalid && (pessoaForm.get('altura')?.dirty || pessoaForm.get('altura')?.touched)" class="invalid-feedback">
+        Altura é obrigatória.
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <label for="peso" class="form-label">Peso:</label>
+      <input type="number" id="peso" formControlName="peso" required class="form-control">
+      <div *ngIf="pessoaForm.get('peso')?.invalid && (pessoaForm.get('peso')?.dirty || pessoaForm.get('peso')?.touched)" class="invalid-feedback">
+        Peso é obrigatório.
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="dataNascimento" class="form-label">Data de Nascimento:</label>
+      <input type="date" id="dataNascimento" formControlName="dataNascimento" required class="form-control">
+      <div *ngIf="pessoaForm.get('dataNascimento')?.invalid && (pessoaForm.get('dataNascimento')?.dirty || pessoaForm.get('dataNascimento')?.touched)" class="invalid-feedback">
+        Data de Nascimento é obrigatória.
+      </div>
+    </div>
+
+    <div class="col-12">
+      <button type="submit" [disabled]="pessoaForm.invalid" class="btn btn-primary">{{ pessoaId ? 'Salvar Alterações' : 'Salvar' }}</button>
+      <button type="button" (click)="cancelar()" class="btn btn-secondary ms-2">Cancelar</button>
+    </div>
+  </form>
+</div>
