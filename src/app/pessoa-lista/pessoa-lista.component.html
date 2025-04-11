@@ -41,10 +41,4 @@
   </table>
 
   <p class="alert alert-info" *ngIf="pessoas.length === 0">Nenhuma pessoa cadastrada.</p>
-
-  <div *ngIf="pesoIdealResultado" class="mt-3 alert alert-success">
-    <h3>Peso Ideal</h3>
-    <p>O peso ideal para {{ pessoaSelecionada?.nome }} é: {{ pesoIdealResultado | number: '1.2-2':'pt'}}  kg</p>
-    <button class="btn btn-sm btn-outline-secondary" (click)="pesoIdealResultado = null">Fechar</button>
-  </div>
 </div>

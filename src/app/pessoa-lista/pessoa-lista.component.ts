@@ -80,7 +80,7 @@ export class PessoaListaComponent implements OnInit {
       this.pessoaService
         .calcularPesoIdeal(pessoa.id)
         .subscribe((pesoIdeal) => {this.pesoIdealResultado = pesoIdeal;
-          this.popupMessage = `O peso ideal para ${pessoa.nome} é ${pesoIdeal} kg`;
+          this.popupMessage = `O peso ideal para ${pessoa.nome} é ${pesoIdeal.toLocaleString('pt-BR')} kg`;
           this.showPopup = true;
         });
     }
